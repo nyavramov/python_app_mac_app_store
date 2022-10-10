@@ -11,11 +11,16 @@
 - [Entitlements .plist file](#entitlements-plist-file)
 - [Running Pyinstaller and Codesigning](#running-pyinstaller-and-codesigning)
 
+
 ## Introduction
+
+**Note**: if you think that you've already got a good understanding of the process of building/codesigning, you can skip to
+the [Running Pyinstaller and Codesigning](#running-pyinstaller-and-codesigning) section, where you can simply run 
+my build script to package your app for the Mac App Store.
 
 This guide will walk you through the process of uploading a Python app to the Mac App Store. It is based on my 
 personal experience of struggling to upload an app successfully. One might think that uploading a Python app to the
-Mac App Store would be easy. After all, Python is one of the most popular languages in the world, and MacOS is one of 
+Mac App Store would be easy. After all, Python is one of the most popular languages in the world, and macOS is one of 
 the most popular operating systems. However, complications with app sandboxing and the app signing process make 
 such an endeavour difficult. It is crucial to specify the correct build parameters and entitlements in order for 
 the app to run properly and be accepted by the Mac App Store.
@@ -32,6 +37,7 @@ Finally, the app we will upload to the App Store will be a simple Python app tha
 This app is meant to be a building block for you to use to build your own app, and as such, I've kept it incredibly
 barebones and simple.
 
+
 ## General Prerequisites
 
 * You must have a Mac Developer account. This is a paid account, and you must pay an annual fee to keep it active.
@@ -42,6 +48,7 @@ https://appstoreconnect.apple.com/apps. If you don't have an app registered, you
 identifier for your app, and it is used to identify your app in the App Store. You can find your bundle ID by
 clicking on your app in the App Store Connect profile, and then clicking on the "General" tab. The bundle ID is
 listed under the "App Information" section. We will use this bundle ID later in the guide.
+
 
 ## Libraries and Tools
 
@@ -57,6 +64,7 @@ Python compiled for Intel's x86_64 architecture. Again, I have not tested this, 
 directory.
 * PyInstaller - You can install it by running `pip install -r requirements.txt` in a terminal in this project's
 directory.
+
 
 ## Running the app locally
 
@@ -80,10 +88,10 @@ You should, for the most part, be able to use it as a template for your own app.
 should know about this file:
 
 * The bundle identifier is something you should change to match your app's bundle identifier. You can set it by setting 
-the value in plist dictionary section of the .spec file, under the key `CFBundleIdentifier`
-* The added files section is where you should add any files that your app needs to run. In this case, we only need the
-icon file, so that is the only file we add. If you need to add more files, you can add them here.
-* The app category is something you should change to match your app's category
+the value in the plist dictionary section of the .spec file, under the key `CFBundleIdentifier`
+* The added files section is where you should add any files that your app needs to run
+* The app category is something you should change to match your app's category. The category value is under the key 
+`LSApplicationCategoryType` in the plist dictionary section of the .spec file.
 * If you deviate from the default .spec file I've created, be very careful about what you change. I've found that 
 certain keys/values will cause the app to crash if they are not set correctly. For example, if you change the 
 `console=False` to `console=True`, the app will crash if you attempt to open it after you codesign it. 
@@ -112,7 +120,6 @@ profile for your app. You can download it by clicking the "Download" button in t
 The next step is to create an icon for your app. You can use any image editor to create an icon. However, the icon
 must be in the .icns format. You can convert an image to the .icns format by using the `iconutil` command. For more 
 details about how to do this, see this gist: https://gist.github.com/jamieweavis/b4c394607641e1280d447deed5fc85fc
-
 
 
 ### Running Pyinstaller and Codesigning
