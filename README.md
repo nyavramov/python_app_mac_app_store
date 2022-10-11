@@ -129,7 +129,8 @@ I've created a python script called `build.py` that will run Pyinstaller and cod
 certificates to run this script: the 3rd party Mac Developer Application certificate, and the 3rd party Mac Developer
 Installer certificate. You can find these certificates by going to the "Certificates, Identifiers, & Profiles" section
 located here: https://developer.apple.com/account/resources/certificates/list. If you haven't created these certificates
-yet, you can probably find tutorials online on how to do so (and I may include more details on this in the future).
+yet, you can probably find tutorials online on how to do so (and I may include more details on this in the future) and 
+may involve creating a Certificate Signing Request (CSR) locally and then uploading it to the Apple Developer website.
 
 Once you have the certificates, you can run the `build.py` script in this repository by running `python build.py` in a
 terminal. A sample run might look like this:
