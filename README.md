@@ -106,8 +106,9 @@ Entitlements are basically permissions that the app needs to run. You can find t
 
 ### Provisioning Profile
 
-You will also need to create a provisioning profile. This is a file that contains information about the app's 
-entitlements, and it is used to sign the app. You can create a provisioning profile by going to the "Certificates,
+You will also need to create a provisioning profile. This is a file that contains information that uniquely ties 
+developers and devices to an authorized Development Team and enables a device to be used for testing, and it is used to
+sign the app. You can create a provisioning profile by going to the "Certificates,
 Identifiers, & Profiles" section of the Apple Developer website: 
 https://developer.apple.com/account/resources/profiles/list. Then, click on "Profiles" in the left
 sidebar, and click the "+" button. Then, select "Mac App Store" as the type of provisioning
