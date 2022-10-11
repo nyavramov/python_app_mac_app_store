@@ -125,15 +125,20 @@ details about how to do this, see this gist: https://gist.github.com/jamieweavis
 
 ### Running Pyinstaller and Codesigning
 
-I've created a python script called `build.py` that will run Pyinstaller and codesign the app. You will need two 
-certificates to run this script: the 3rd party Mac Developer Application certificate, and the 3rd party Mac Developer
-Installer certificate. You can find these certificates by going to the "Certificates, Identifiers, & Profiles" section
-located here: https://developer.apple.com/account/resources/certificates/list. If you haven't created these certificates
-yet, you can probably find tutorials online on how to do so (and I may include more details on this in the future) and 
-may involve creating a Certificate Signing Request (CSR) locally and then uploading it to the Apple Developer website.
+I've created a python script called `build.py` that will run Pyinstaller and codesign the app. The .spec file currently 
+assumes that the icon is called `icon.icns` and the entrypoint is called `main.py`. It also assumes there are no 
+added files, but for a real app, you will probably need to add some files.
+You can change these values in the .spec file if you want to use different names, but I may add command line arguments
+to the `build.py` script to make this easier in the future.
 
-Once you have the certificates, you can run the `build.py` script in this repository by running `python build.py` in a
-terminal. A sample run might look like this:
+You will need two certificates to run this script: the 3rd party Mac Developer Application certificate, and the 3rd
+party Mac Developer Installer certificate. You can find these certificates by going to the "Certificates, Identifiers, 
+& Profiles" section located here: https://developer.apple.com/account/resources/certificates/list. If you haven't 
+created these certificates yet, you can probably find tutorials online on how to do so (and I may include more details
+on this in the future). This process may involve creating a Certificate Signing Request (CSR) locally and then uploading
+it to the Apple Developer website.
+
+Once you have the certificates, you can run the `build.py` script in this repository. A sample run might look like this:
 
 ```bash
 $ python build.py \
